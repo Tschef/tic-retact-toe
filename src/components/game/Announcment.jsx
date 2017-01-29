@@ -9,7 +9,7 @@ class Announcement extends React.Component {
             return  (<div/>);
         }
 
-        const noWinner = 'Nobody wins this time! So everybody is a winner :)';
+        const noWinner = 'Nobody wins this time! :)';
         const theWinner = `!! Player ${this.props.winner} won !!`;
         const msg = this.props.winner > 2 ? noWinner : theWinner;
 
