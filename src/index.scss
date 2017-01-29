@@ -1,0 +1,213 @@
+$headerHeight: 3.5em;
+body {
+    margin: $headerHeight 0 0 0;
+    background-color: #BBBBBB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (min-width: 801px) {
+    body {
+        font-size: large;
+    }
+}
+
+@media (max-width: 800px) {
+    body {
+        font-size: medium;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        font-size: small;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        font-size: xx-small;
+    }
+}
+
+.game {
+    padding-top: 20px;
+}
+
+.info {
+    padding: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    background: white;
+    h1,
+    h2,
+    h3 {
+        color: orange;
+        padding-top: 20px;
+    }
+}
+
+header {
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    color: white;
+    background: dodgerblue;
+    height: $headerHeight;
+    border-bottom: 2px solid orange;
+    img {
+        height: $headerHeight - 0.5em;
+        padding: 5px;
+        float: left;
+    }
+    h1 {
+        margin: 0.3em;
+        display: inline-block;
+    }
+    ul {
+        float: right;
+    }
+    li {
+        display: inline-block;
+        margin-right: 1em;
+    }
+    a {
+        color: white;
+        border-bottom: 3px solid orange;
+        text-decoration: none;
+    }
+}
+
+.grid {
+    background: white;
+}
+
+.grid,
+.row {
+    flex-wrap: wrap;
+    margin: 2px;
+    padding: 0;
+}
+
+.history {
+    background: transparent;
+    .grid,
+    .row {
+        background: lightgray;
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// x and o symbols
+.cell {
+    background-color: #9A8297;
+    margin: 0.313em;
+    width: 5.625em;
+    height: 5.625em;
+    border-radius: 0.375em;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    &:hover {
+        transform: rotate(5deg);
+    }
+}
+
+// x symbol
+.cell1 {
+    @extend .cell;
+    color: #FFFFFF;
+    &:before,
+    &:after {
+        transition: all 1.0s;
+        position: absolute;
+        width: 0.375em;
+        height: 3.125em;
+        background-color: white;
+        display: block;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 0.188em;
+    }
+    &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+// o symbol
+.cell2 {
+    @extend .cell;
+    &:after {
+        transition: all 1.0s;
+        position: absolute;
+        display: block;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        border: solid 0.375em white;
+        width: 2.750em;
+        height: 2.750em;
+        transform: translate(-50%, -50%);
+    }
+}
+
+// new game button
+.button {
+    text-decoration: none;
+    height: 20px;
+    background-color: dodgerblue;
+    border-radius: 20px;
+    color: white;
+    margin: auto;
+    padding: 10px 20px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
+}
+
+.buttonSmall {
+    @extend .button;
+    padding: 3px 5px;
+}
+
+// winner/looser/tie announcment
+.announcment {
+    font-size: 24px;
+    transition: all 1.0s;
+    color: #FFFFFF;
+}
+
+// animations
+.animation-enter {
+    opacity: 0.01;
+}
+
+.animation-enter.animation-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.animation-leave {
+    opacity: 1;
+}
+
+.animation-leave.animation-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
